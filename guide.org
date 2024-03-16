@@ -1,0 +1,13 @@
+#+TITLE:    Linux in Embedded Systems
+#+SUBTITLE: Lab guide
+#+DATE:    <2024-03-16 Sat>
+#+AUTHOR:   Bartek, Maciek
+#+LANGUAGE: en
+
+#+OPTIONS:  ^:nil
+#+OPTIONS:  toc:t
+
+
+* Section 1
+<<sec:section-1>>
+
