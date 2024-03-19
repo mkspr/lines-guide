@@ -7,39 +7,60 @@
 #+OPTIONS:  ^:nil
 #+OPTIONS:  toc:t
 
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 
-* Section 1
-<<sec:section-1>>
 
 * Prerequisites
+<<sec:prerequisites>>
 Prepare 2 terminals:
-- In one of them go to you Buildroot directory - we will refer to this one as your local terminal (or pc)
-- In the other one run *minicom -D /dev/ttyUSB0 -b 115200 -o* - this will allow you to interact with the raspberry pi, so that's how we will call it
+- In one of them go to your Buildroot directory - we will refer to this one as your local terminal.
+- In the other one run the following:
 
-* Building the Linux
+  =minicom -D /dev/ttyUSB0 -b 115200 -o=
+
+  This will allow you to interact with the Raspberry Pi, so that's how we will call it.
+
+* Building Linux
+<<sec:build-linux>>
 Do this in your local terminal
+
 ** If you're building for the first time
-- *make raspberrypi4_64_defconfig* - this will set up the default congiration for the raspberry pi
-- *make menuconfig* - this command opens interactive menu, where you can change all the configuration properties; use it to change all the properties mentioned in the laboratory guide
+- =make raspberrypi4_64_defconfig=
+
+  This will set up the default congiration for the Raspberry Pi.
+- =make menuconfig=
+
+  This command opens interactive menu, where you can change all the configuration properties; use it to change all the properties mentioned in the laboratory guide.
+
 ** Next steps (and any consequent build)
-- *make menuconfig* - if you want to make any changes
-- *make* - this will actually compile the linux for your raspberry
+- If you want to make any changes:
+
+  =make menuconfig=
+- If you want to build the image with your changes:
+
+  =make=
 
 * Flashing the needed files
+<<sec:flash-files>>
+
 ** Prerequisites
 - Boot your raspberry pi into the rescue system (hold SW4 while powering it up)
-** Flashing the rootfs
-(optional if Initial RAM filesystem was selected during configuration)
-- TBD
+
+** Flashing the rootfs [TBD]
+(If Initial RAM filesystem was selected during configuration, then this is optional)
+
 ** Flashing the system image
+
 *** In your local terminal
-- *ip a* - take note of your ip - 192.168.145.xxx
-- *cd output/images*
-- *python3 -m http-server*
+- =ip a= - take note of your IP address - =192.168.145.xxx=
+- =cd output/images=
+- =python3 -m http-server=
+
 *** On the raspberry
 - log into the system
-- *mkdir /tmp/d* - create a temporary directory
-- *mount /dev/mmcblk0p1 /tmp/d* - mount first partition of sdcard on that directory
-- *wget 192.168.145.xxx:8000/Image* - copy the Image
-- *wget 192.168.145.xxx:8000/.dtb* - copy the dtb
+- =mkdir /tmp/d= - create a temporary directory
+- =mount /dev/mmcblk0p1 /tmp/d= - mount first partition of SD card on that directory
+- =wget 192.168.145.xxx:8000/Image= - copy the Image
+- =wget 192.168.145.xxx:8000/.dtb= - copy the DTB
+
 *** Reboot the raspberry
