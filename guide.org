@@ -60,6 +60,7 @@ Do this in your local terminal
 - log into the system
 - =mkdir /tmp/d= - create a temporary directory
 - =mount /dev/mmcblk0p1 /tmp/d= - mount first partition of SD card on that directory
+- =cd /tmp/d/user= - go into the user directory (might be named User or Users instead)
 - =wget 192.168.145.xxx:8000/Image= - copy the Image
 - =wget 192.168.145.xxx:8000/.dtb= - copy the DTB
 
